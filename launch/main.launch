@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="teleop" default="joy" />
+	<arg name="filter" default="on"/>
+	<arg name="viz" default="on"/>
+	<arg name="record" default="off"/>
+
+	<include file="$(find segway_sim)/launch/rviz.launch" if="$(eval viz == 'on')"/>
+	<include file="$(find segway_sim)/launch/manual_teleop.launch"/>
+
+	<group ns="segway_sim">
+
+		<node name="integrator" pkg="segway_sim" type="integrator_node" output="screen">
+			<param name="dt" value="0.001" />
+			<param name="umax" value="20.0" />
+			<param name="input_delay_ms" value="0.0"/>
+			<rosparam param="IC">[0, 0, 0, 0.0, 0.0, 0.0, 0.0]</rosparam>
+		</node>
+
+		<node name="controller" pkg="segway_sim" type="controller_node" output="screen">
+			<param name="offset_angle" value="0.138324423615"/>
+			<param name="umax" value="20"/>
+			<param name="dt" value="0.001"/>
+			<rosparam param="gains">[0., 0., 0., 50.8129, 0., 147.1530, 46.8037]</rosparam>
+		</node>
+
+		<node name="sensor" pkg="segway_sim" type="sensor_node" output="screen">
+			<param name="offset_angle" value="0.138324423615"/>
+		</node>
+
+		<node name="ekf" pkg="segway_sim" type="ekf_node" output="screen">
+			<param name="offset_angle" value="0.138324423615"/>
+		</node>
+
+		<node name="safety_filter" pkg="segway_sim" type="safety_filter_node" output="screen" >
+			<param name="pass_through" value="0" if="$(eval filter == 'on')"/>
+			<param name="pass_through" value="1" if="$(eval filter == 'off')"/>
+			<param name="integration_dt" value="0.005"/>
+			<param name="backup_Tmax" value="1"/>
+		</node>
+
+		<node pkg="rosbag" type="record" name="rosbag_recorder"
+	       args="record -o $(find segway_sim)/bags/ /segway_sim/input /segway_sim/inputDes /segway_sim/state" output="screen" if="$(eval record == 'on')"/> 
+	</group>
+</launch>
+
+
+<!-- rosservice call /segway_sim/integrator/ui "cmd: 1" -->
