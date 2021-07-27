@@ -1,6 +1,6 @@
 # cyberpod_sim_ros
 
-The majority of this code was original written by Andrew Singleterry. Adjustments were made by Ryan Cosner and Sarah Dean for use in producing the experimental results for their CoRL 2020 paper: "Measurement-Robust Control Barrier Functions: Certainty in Safety with Uncertainty in State" ([Arxiv link](https://arxiv.org/pdf/2104.14030.pdf)).
+The majority of this code was original written by Andrew Singletary. Adjustments were made by Ryan Cosner and Sarah Dean for use in producing the experimental results for their CoRL 2020 paper: "Measurement-Robust Control Barrier Functions: Certainty in Safety with Uncertainty in State" ([Arxiv link](https://arxiv.org/pdf/2104.14030.pdf)).
 
 To install and run this package, you'll need a working ROS environment. This repo was tested using Ubuntu 18.04 and Ros Melodic. 
 
