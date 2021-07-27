@@ -1,6 +1,6 @@
-# segway_sim
+# segway_sim IROS 2021
 
-This is a ROS-based C++ simulation environment for a two-wheeled inverted pendulum (Segway) robot. It currently has two branches, a Model Predictive Control (MPC) branch that uses a Mixed Observable Markov Decision Process (MOMDP) planner for high-level planning, and uses the MPC for trajectory generation and control. The other branch is a Control Barrier Function (CBF) branch that guarantees that the system stays in a "safe" subset of the state space, regardless of the inputs given to the system from the user.
+This is a ROS-based C++ simulation environment for a two-wheeled inverted pendulum (Segway) robot.
 
 <p align="center">
 <img src="https://i.imgur.com/Y8BJ5XU.png" width="250" />
@@ -44,4 +44,4 @@ This code is based on the following:
 
 (CBF)
 * Gurriet, T., Singletary, A., Reher, J., Ciarletta, L., Feron, E., & Ames, A. (2018, April). Towards a framework for realizable safety critical control through active set invariance. In 2018 ACM/IEEE 9th International Conference on Cyber-Physical Systems (ICCPS) (pp. 98-106). IEEE. [PDF](https://ieeexplore.ieee.org/abstract/document/8443725)
-* U. Rosolia and A. D. Ames, "Multi-Rate Control Design Leveraging Control Barrier Functions and Model Predictive Control Policies," in IEEE Control Systems Letters, vol. 5, no. 3, pp. 1007-1012, July 2021, [PDF](https://ieeexplore.ieee.org/document/9137248)
+* Cosner, R, Singletary, A., Taylor, A., Molnar, T., Bouman, K., & Ames, A. (2021, September). Measurement-Robust Control Barrier Functions: Certainty in Safety with Uncertainty in State
